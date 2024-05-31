@@ -14,6 +14,7 @@ import CreateFolder from "./CreateFolder";
 import UploadFolder from "./UploadFolder";
 
 function FolderList({ tempName, fetchAllFolders, folderData, templateId }) {
+  const API_KEY = process.env.REACT_APP_API_IP;
   const [file, setFile] = useState(null);
 
    const handleFolderChange = (e) => {

@@ -12,6 +12,7 @@ import { HiDocumentArrowUp } from "react-icons/hi2";
 import { FaRegFolderClosed } from "react-icons/fa6";
 
 function FetchFolder({ folderData, setSelectedFolder, selectedFolder, templateId ,setSubfolder}) {
+  const API_KEY = process.env.REACT_APP_API_IP;
   const [menuVisible, setMenuVisible] = useState(false);
   const [menuVisibleFile, setMenuVisibleFile] = useState(false);
   const [selectedFolderIndex, setSelectedFolderIndex] = useState(null);
@@ -62,7 +63,8 @@ function FetchFolder({ folderData, setSelectedFolder, selectedFolder, templateId
 
   const fetchAllFolders = async () => {
     try {
-      const response = await axios.get(`http://192.168.1.116:8080/allFolders/${templateId}`);
+      const url = `${API_KEY}/allFolders/${templateId}`;
+      const response = await axios.get(url);
       setFolderDataRef(response.data.folders);
     } catch (error) {
       console.error("Error fetching all folders:", error.response.data.error);
@@ -71,8 +73,9 @@ function FetchFolder({ folderData, setSelectedFolder, selectedFolder, templateId
 
   const handleDownloadFolder = async (folder) => {
     try {
+      const url = `${API_KEY}/download/${folder}`;
       await axios
-        .get(`http://192.168.1.116:8080/download/${folder}`, {
+        .get(url, {
           responseType: "blob",
         })
         .then((response) => {
@@ -104,9 +107,10 @@ function FetchFolder({ folderData, setSelectedFolder, selectedFolder, templateId
   const handleRenameFile = async (folder, oldFileName) => {
     const newFileName = prompt("Enter new file name:", oldFileName);
     if (newFileName) {
+      const url = `${API_KEY}/download/${folder}/common/renameFile/${templateId}/${folder}/${oldFileName}`;
       try {
         //await axios.put(`http://127.0.0.1:8080/renameFile/${folder}/${oldFileName}`, { newFileName });
-        const response = await axios.put(`http://192.168.1.116:8080/common/renameFile/${templateId}/${folder}/${oldFileName}`, { newFileName });
+        const response = await axios.put(url, { newFileName });
 
         setRenamedFile(newFileName); // Update renamed file name in state
         // Refresh folder data after renaming
@@ -130,7 +134,8 @@ function FetchFolder({ folderData, setSelectedFolder, selectedFolder, templateId
     let config = {
       method: "delete",
       maxBodyLength: Infinity,
-      url: `http://192.168.1.116:8080/common/deleteFile/`,
+     
+      url: `${API_KEY}/common/deleteFile/`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -150,7 +155,8 @@ function FetchFolder({ folderData, setSelectedFolder, selectedFolder, templateId
   const handleDownloadFile = async (folder, file) => {
     toggleMenuFile();
     try {
-      const response = await fetch(`http://192.168.1.116:8080/download/${folder}/${file}`);
+    
+      const response = await fetch(`${API_KEY}/download/${folder}/${file}`);
       const blob = await response.blob(); // Corrected this line
 
       // Create an anchor element and trigger a download
@@ -178,7 +184,7 @@ function FetchFolder({ folderData, setSelectedFolder, selectedFolder, templateId
   const handleDeleteFolder = async (folder) => {
     try {
       // Send a request to the server to delete the folder
-      await axios.post("http://192.168.1.116:8080/deleteFolder", { folderName: folder });
+      await axios.post(`${API_KEY}/deleteFolder`, { folderName: folder });
       //fetchAllFolders();
     } catch (error) {
       console.error("Error deleting folder:", error);
@@ -195,7 +201,7 @@ function FetchFolder({ folderData, setSelectedFolder, selectedFolder, templateId
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
 
-      const response = await axios.post(`http://192.168.1.116:common/upload/${folderName}/${templateId}/${selectedFolder}`, formData, {
+      const response = await axios.post(`${API_KEY}/upload/${folderName}/${templateId}/${selectedFolder}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

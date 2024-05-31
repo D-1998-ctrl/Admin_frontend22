@@ -308,8 +308,8 @@ const ClientSignUp = ({ handleSignupPage }) => {
             lastName: lastName,
             phoneNumber: phoneNumber,
             accountName: accountName,
-            // password: inppass.password,
-            // cpassword: inppass.cpassword,
+            password: inppass.password,
+            cpassword: inppass.cpassword,
         });
 
         const requestOptions = {

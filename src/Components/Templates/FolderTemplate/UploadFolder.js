@@ -18,6 +18,7 @@ import { AiFillFileUnknown } from "react-icons/ai";
 import { BsFiletypeXlsx } from "react-icons/bs";
 
 const UploadDocument = ({ isSendFolderForm, setIsSendFolderForm, folderData, templateId,files,setFiles }) => {
+  const API_KEY = process.env.REACT_APP_API_IP;
   const [menuVisible, setMenuVisible] = useState(false);
   const [menuVisibleFile, setMenuVisibleFile] = useState(false);
   const [expandedFolders, setExpandedFolders] = useState([]);
@@ -68,7 +69,8 @@ const UploadDocument = ({ isSendFolderForm, setIsSendFolderForm, folderData, tem
 
   const fetchAllFolders = async () => {
     try {
-      const response = await axios.get(`http://192.168.1.116:8080/allFolders/${templateId}`);
+      const url = `${API_KEY}/allFolders/${templateId}`;
+      const response = await axios.get(url);
       setFolderDataRef(response.data.folders);
     } catch (error) {
       console.error("Error fetching all folders:", error.response.data.error);
@@ -114,7 +116,8 @@ const UploadDocument = ({ isSendFolderForm, setIsSendFolderForm, folderData, tem
     
 
     try {
-      await axios.post(`http://192.168.1.116:8080/uploadFolder`, formData);
+      const url = `${API_KEY}/uploadFolder`;
+      await axios.post(url, formData);
       alert("Folder uploaded successfully!");
       setFiles(null);
       setIsSendFolderForm(false);

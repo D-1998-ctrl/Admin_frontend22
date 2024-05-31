@@ -10,6 +10,8 @@ import TemplateName from "./FolderTemplate/TemplateName";
 
 
 const FolderTemp = () => {
+  
+  const API_KEY = process.env.REACT_APP_API_IP;
   const [isOpenClientDocs, setIsOpenClientDocs] = useState(false);
   const [isOpenSharedDocs, setIsOpenSharedDocs] = useState(false);
   const [isOpenPrivate, setIsOpenPrivate] = useState(false);
@@ -34,7 +36,8 @@ const FolderTemp = () => {
   useEffect(() => {
     async function fetchFolderTemplates() {
       try {
-        const response = await fetch("http://192.168.1.116:8080/common/folder");
+        const url = `${API_KEY}/common/folder`;
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Failed to fetch folder templates");
         }
@@ -95,8 +98,9 @@ const FolderTemp = () => {
       redirect: "follow",
     };
 
-
-    fetch("http://192.168.1.116:8080/common/folder", requestOptions)
+    const url = `${API_KEY}/common/folder`;
+    
+    fetch(url, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result.id);
@@ -122,7 +126,9 @@ const FolderTemp = () => {
   const [folderData, setFolderData] = useState([]);
   const fetchAllFolders = async (id) => {
     try {
-      const response = await axios.get(`http://192.168.1.116:8080/allFolders/${id}`);
+      const url = `${API_KEY}/allFolders/${id}`;
+      
+      const response = await axios.get(url);
       setFolderData(response.data.folders);
       console.log(response);
     } catch (error) {

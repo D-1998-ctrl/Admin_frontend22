@@ -1,0 +1,67 @@
+.client-setting-all {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+
+.client-profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+}
+
+.hr_client {
+    flex: 1;
+    border-bottom: 3px solid #84a9ce;
+    position: relative;
+    margin: 10px;
+
+}
+
+.user-profile-container {
+    align-items: center;
+}
+
+
+.client-resetpass span {
+    color: #067cf3;
+
+}
+
+
+/*  */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+   
+  }
+  
+  .overlay-content {
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    /* text-align: center; */
+    position: relative;
+  }
+
+  .overlay-clientlogin-container {
+    max-width: 430px;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+
+  
+ 

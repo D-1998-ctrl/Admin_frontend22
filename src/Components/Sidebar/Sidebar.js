@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./sidebar.css";
-import { FaAngleLeft, FaAngleDown, FaAngleUp, FaBars,  FaSun } from "react-icons/fa";
+import { FaAngleLeft, FaAngleDown, FaAngleUp, FaBars, FaSun } from "react-icons/fa";
 
 import Companylogo from "../../Static/Images/logo.svg";
 import { menuItems } from "./menuItems";
-
-
 
 // import Switch from "react-switch";
 import { LoginContext } from "../ContextProvider/Context";
@@ -17,7 +15,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import CreateContact from "../../Pages/AllPages/Insights/Contact";
 import CreateAccount from "../../Pages/AllPages/Insights/CreateAccount";
-import user from '../../Static/Images/user.jpeg'
+import user from "../../Static/Images/user.jpeg";
 import Cookies from "js-cookie";
 import { AiOutlineLogout } from "react-icons/ai";
 import { CgDarkMode } from "react-icons/cg";
@@ -36,7 +34,6 @@ function Sidebar() {
   const toggleSubMenu = (index) => {
     setOpenSubMenu(openSubMenu === index ? null : index);
   };
-
 
   //Logout
 
@@ -107,19 +104,22 @@ function Sidebar() {
       // console.log("error page");
       navigate("/login");
     } else {
-      console.log("user verify");
+      // console.log("user verify");
       setLoginData(data);
       setloginsData(data.user.id);
       if (data.user.role === "Admin") {
-        fetchUserData(data.user.id)
+        fetchUserData(data.user.id);
         navigate("/");
-      }
-      else if (data.user.role === "Client") {
+      } else if (data.user.role === "Client") {
         navigate("/clientDash/home");
-      }
-      else {
-        toast.error("You are not valid user.")
-        setTimeout(() => { navigate("/login"); }, 1000);
+      } else if (data.user.role === "TeamMember") {
+        fetchUserData(data.user.id);
+        navigate("/");
+      } else {
+        toast.error("You are not valid user.");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
       }
     }
   };
@@ -131,12 +131,10 @@ function Sidebar() {
   //   }, 2000);
   // }, []);
 
-
   useEffect(() => {
     DashboardValid();
     setData(true);
   }, []);
-
 
   const [userData, setUserData] = useState("");
   const [username, setUsername] = useState("");
@@ -172,7 +170,6 @@ function Sidebar() {
   // useEffect(() => {
   //   fetchUserData();
   // }, [loginsData]);
-
 
   const [contactForm, setContactForm] = useState(false);
   const [accountform, setAccountForm] = useState(false);
@@ -246,7 +243,6 @@ function Sidebar() {
             </span>
             <div className="text hidden-text">
               <span className="name">SNP</span>
-
             </div>
           </div>
           <div className="sidebar-items">
@@ -283,34 +279,34 @@ function Sidebar() {
             </div>
             <div className="bottom-content">
               <ul>
-                <li >
-                  <Link to="#" className="logout-link" >
+                <li>
+                  <Link to="#" className="logout-link">
                     <div>
                       <img src={user} alt="user" className="user-icon" />
                     </div>
 
-                    <span
-                      className="hidden-text"
-
-                    >
+                    <span className="hidden-text">
                       <b>{username}</b>
                       <h6>{userData}</h6>
                     </span>
                     <div>
-                      <AiOutlineLogout className="logout-icon"  onClick={() => {
-                    logoutuser();
-                  }}/>
+                      <AiOutlineLogout
+                        className="logout-icon"
+                        onClick={() => {
+                          logoutuser();
+                        }}
+                      />
                     </div>
-
                   </Link>
-
-
-
                 </li>
-                <li className="theme-mode-toggle" >
-                
-                    <div  style={{ fontSize: "20px", display:'flex', alignItems:'center', gap:'10px' }}>{theme === "light-theme" ? <CgDarkMode  className="mode-icon" onClick={toggleTheme}/> : <FaSun className="mode-icon" onClick={toggleTheme}/>}<span className="hidden-text" style={{fontSize:'12px'}}>Admin View</span></div>
-                                                  {/* <span style={{ fontSize: "20px" }}>{theme === "light-theme" ? <FaMoon className="mode-icon" /> : <FaSun className="mode-icon" />}</span> */}
+                <li className="theme-mode-toggle">
+                  <div style={{ fontSize: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
+                    {theme === "light-theme" ? <CgDarkMode className="mode-icon" onClick={toggleTheme} /> : <FaSun className="mode-icon" onClick={toggleTheme} />}
+                    <span className="hidden-text" style={{ fontSize: "12px" }}>
+                      Admin View
+                    </span>
+                  </div>
+                  {/* <span style={{ fontSize: "20px" }}>{theme === "light-theme" ? <FaMoon className="mode-icon" /> : <FaSun className="mode-icon" />}</span> */}
                   {/* <span className="hidden-text" style={{ marginLeft: "15px" }}>
                     {theme === "light-theme" ? " dark-theme" : "light-theme"}
                   </span> */}

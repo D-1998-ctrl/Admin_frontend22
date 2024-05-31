@@ -20,10 +20,9 @@ import startsWith from "lodash.startswith";
 import firmsetting from "../../../Pages/static/firm setting.png";
 
 const SignUp = ({ handleSignupPage }) => {
-
   const API_KEY = process.env.REACT_APP_API_IP;
   const FAPI_KEY = process.env.REACT_APP_FAPI_IP;
-  
+
   const history = useNavigate();
   const setVal = (e) => {
     // console.log(e.target.value);
@@ -55,9 +54,6 @@ const SignUp = ({ handleSignupPage }) => {
 
   //? ========    #navigation control   No2 =======
 
-
-
- 
   //? ========    #navigation control   No2 =======
 
   //todo ========    #send mail to backend for varification code  case 1: =======
@@ -103,7 +99,7 @@ const SignUp = ({ handleSignupPage }) => {
         headers: myHeaders,
         redirect: "follow",
       };
-  const Url = `${API_KEY}/common/user/email/getuserbyemail/`;
+      const Url = `${API_KEY}/common/user/email/getuserbyemail/`;
       fetch(Url + email, requestOptions)
         .then((response) => {
           if (!response.ok) {
@@ -323,7 +319,6 @@ const SignUp = ({ handleSignupPage }) => {
       } catch (error) {
         setError(error);
       } finally {
-      
       }
     };
 
@@ -693,19 +688,16 @@ const SignUp = ({ handleSignupPage }) => {
       state: selectedState,
       firmSize: svalue,
       referenceFrom: selectedOption,
-      services: [
-        {
-          service: selectedButtons,
-        },
-      ],
+      services: selectedButtons,
+
       role: roleOption,
       firmURL: combinedData.url,
       currency: selectedCurrency.label,
       language: language.label,
-      // password: inppass.password,
-      // cpassword: inppass.cpassword,
+      password: inppass.password,
+      cpassword: inppass.cpassword,
     });
-
+    // console.log(raw);
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -792,8 +784,6 @@ const SignUp = ({ handleSignupPage }) => {
 
   //todo book session for demo  case 10:
 
-
-
   const handleBookSession = () => {
     nextStep();
   };
@@ -878,7 +868,7 @@ const SignUp = ({ handleSignupPage }) => {
                   <p style={{ fontSize: "14px", margin: "3px 0" }}>Please,enter it below</p>
                   <br />
                   <div>
-                    <div className="otp-input" style={{ padding: "10px" }}>
+                    <div className="otp-input">
                       <OtpInput
                         value={otp}
                         onChange={setOtp}

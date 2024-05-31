@@ -344,7 +344,7 @@ const CreatePipeline = () => {
                 <div>
                     <h3 style={{ fontSize: "25px" }} className='pipeline-heading'>Pipelines</h3>
                     <button className='btn1' style={{ marginLeft: "0px" }} onClick={handleCreateTemplate}>Create Pipeline</button>
-                    <table style={{ marginTop: "10px", }} >
+                    <table style={{ marginTop: "10px",width:'100%' }} >
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -354,7 +354,7 @@ const CreatePipeline = () => {
                         <tbody>
                             {currentTemplates && currentTemplates.map(pipeline => (
                                 <tr key={pipeline._id}>
-                                    <td onClick={() => handleEdit(pipeline._id)} style={{ cursor: "pointer", color: 'var( --text-color)' }}>{pipeline.pipelineName}</td>
+                                    <td onClick={() => handleEdit(pipeline._id)} style={{ cursor: "pointer", color: 'var( --text-color)' ,textAlign:'center'}}>{pipeline.pipelineName}</td>
                                     <td>
                                         <div className="ci-menu-kebab" onClick={() => toggleMenu(pipeline._id)} style={{ cursor: 'pointer', fontSize: '20px' }}>
                                             &#8942;

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import AdminLogin from "../Logins/AdminLogin/AdminLogin/AdminLogin";
 import Error from "../Error404/Error";
 import "../App.css";
@@ -37,60 +37,67 @@ import IRS from "../Components/nested-navbar/documents-nav/IRS";
 import TagCreate from "../Pages/AllPages/Insights/TagCreate.js";
 import ContactTable from "../Pages/AllPages/Insights/ContactTable.js";
 
-
-
 import FirmTemplates from "../Pages/AllPages/Insights/FirmTemplates.js";
-import JobsTemp from '../Components/Templates/JobTemp.js';
-import PipelinesTemp from '../Components/Templates/PipelineTemp.js';
-import OrgnizersTemp from '../Components/Templates/OrganizersTemp.js';
-import FoldersTemp from '../Components/Templates/FolderTemp.js';
-import ChatsTemp from '../Components/Templates/ChatsTemp.js';
-import SmsTemp from '../Components/Templates/SmsTemp.js';
-import ProposalsTemp from '../Components/Templates/ProposalsTemp.js';
-import InvoicesTemp from '../Components/Templates/InvoicesTemp.js';
-import RecurringInvoices from '../Components/Templates/RecurringInvoices.js';
-import SignaturesTemp from '../Components/Templates/SignaturesTemp.js';
-import PipelineTempUpdate from '../Components/Templates/PipelineTempUpdate.js'
-import JobTemplateUpdate from '../Components/Templates/JobTemplateUpdate.js'
+import JobsTemp from "../Components/Templates/JobTemp.js";
+import PipelinesTemp from "../Components/Templates/PipelineTemp.js";
+import OrgnizersTemp from "../Components/Templates/OrganizersTemp.js";
+import FoldersTemp from "../Components/Templates/FolderTemp.js";
+import ChatsTemp from "../Components/Templates/ChatsTemp.js";
+import SmsTemp from "../Components/Templates/SmsTemp.js";
+import ProposalsTemp from "../Components/Templates/ProposalsTemp.js";
+import InvoicesTemp from "../Components/Templates/InvoicesTemp.js";
+import RecurringInvoices from "../Components/Templates/RecurringInvoices.js";
+import SignaturesTemp from "../Components/Templates/SignaturesTemp.js";
+import PipelineTempUpdate from "../Components/Templates/PipelineTempUpdate.js";
+import JobTemplateUpdate from "../Components/Templates/JobTemplateUpdate.js";
 import CreateEmailTemplate from "../Components/Templates/CreateEmailTemplate.js";
 import UpdateEmail from "../Components/Templates/UpdateEmail.js";
 import ClientLogin from "../Logins/ClientSignup/ClientLogin/ClientLogin.js";
-import ClientSignup from "../Logins/ClientSignup/ClientSignup/ClientSignup.js"
+import ClientSignup from "../Logins/ClientSignup/ClientSignup/ClientSignup.js";
 // import ClientDash from "../Pages/Dashboards/ClientDashboard/ClientDash.js";
 import TeamsPlans from "../Pages/AllPages/Insights/TeamsPlans.js";
-import PlanOverview from '../Components/nested-navbar/teamplans-nav/PlanOverview.js';
-import TeamMembers from '../Components/nested-navbar/teamplans-nav/TeamMembers.js';
-import TeamInvoices from '../Components/nested-navbar/teamplans-nav/Invoices.js'
+import PlanOverview from "../Components/nested-navbar/teamplans-nav/PlanOverview.js";
+import TeamMembers from "../Components/nested-navbar/teamplans-nav/TeamMembers.js";
+import TeamInvoices from "../Components/nested-navbar/teamplans-nav/Invoices.js";
 import ActiveMembres from "../Pages/AllPages/Insights/ActiveMembres.js";
 import DeactivatedMembers from "../Pages/AllPages/Insights/DeactivatedMembers.js";
 import ActiveAccount from "../Pages/AllPages/Insights/ActiveAccount.js";
 import ClientSidebar from "../Client-dash/ClientSidebar.js";
 import NoPage from "../Client-dash/client-pages/NoPage.js";
 import Home from "../Client-dash/client-pages/Home.js";
-import Document from '../Client-dash/client-pages/Document.js'
-import Chats from '../Client-dash/client-pages/Chats.js'
-import Task from '../Client-dash/client-pages/Tasks.js'
-import Organizer from '../Client-dash/client-pages/Organiser.js'
-import Proposal from '../Client-dash/client-pages/Proposals.js'
-import ELS from '../Client-dash/client-pages/Els.js'
-import Billing from '../Client-dash/client-pages/Billing.js'
-import Settings from '../Client-dash/client-pages/Settings.js'
+import Document from "../Client-dash/client-pages/Document.js";
+import Chats from "../Client-dash/client-pages/Chats.js";
+import Task from "../Client-dash/client-pages/Tasks.js";
+import Organizer from "../Client-dash/client-pages/Organiser.js";
+import Proposal from "../Client-dash/client-pages/Proposals.js";
+import ELS from "../Client-dash/client-pages/Els.js";
+import Billing from "../Client-dash/client-pages/Billing.js";
+import Settings from "../Client-dash/client-pages/Settings.js";
 import AddJobs from "../Pages/AllPages/Insights/AddJobs.js";
-import JobsData from '../Pages/AllPages/Insights/JobsData.js'
-import Archive from '../Client-dash/client-pages/nav-pages/Archive.js'
-import Active from '../Client-dash/client-pages/nav-pages/Active.js'
+import JobsData from "../Pages/AllPages/Insights/JobsData.js";
+import Archive from "../Client-dash/client-pages/nav-pages/Archive.js";
+import Active from "../Client-dash/client-pages/nav-pages/Active.js";
 import Myaccount from "../Pages/AllPages/Insights/My_account";
-import BillingInvoces from '../Client-dash/client-pages/Billing_nav/Invoices.js'
+import BillingInvoces from "../Client-dash/client-pages/Billing_nav/Invoices.js";
 import Recurring_invoices from "../Client-dash/client-pages/Billing_nav/Recurring_invoices.js";
 import Payment from "../Client-dash/client-pages/Billing_nav/Payment.js";
 import Tasks from "../Components/Templates/Tasks.js";
-import CreateInvoice from '../Pages/AllPages/Insights/CreateInvoice.js'
+import CreateInvoice from "../Pages/AllPages/Insights/CreateInvoice.js";
 import OneTimeInvoice from "../Pages/AllPages/Insights/OneTimeInvoice.js";
-import BillingRecurringInvoice from '../Pages/AllPages/Insights/RecurringInvoice.js'
+import BillingRecurringInvoice from "../Pages/AllPages/Insights/RecurringInvoice.js";
 import Services from "../Components/Templates/Services.js";
+import ServiceTemplateUpdate from "../Components/Templates/ServiceTemplateUpdate.js";
+import InvoicesTempUpdate from "../Components/Templates/InvoicesTempUpdate.js";
+import ChatsTempUpdate from "../Components/Templates/ChatsTempUpdate.js";
+import OneTimeInvoiceUpdate from "../Pages/AllPages/Insights/OneTimeInvoiceUpdate.js";
+
+
+
+
+
 const Path = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Sidebar />}>
           <Route index element={<Insights />} />
@@ -98,42 +105,39 @@ const Path = () => {
           <Route path="*" element={<Error />} />
           {/* <Route path="/tags" element={<TagCreate />} /> */}
           <Route path="/contacts" element={<ContactTable />} />
-          <Route path='/billinginvoices' element={<CreateInvoice/>}>
-            <Route path='onetime' element={<OneTimeInvoice/>}/>
-            <Route path='recurring' element={<BillingRecurringInvoice/>}/>
+          
+          <Route path="/invoiceupdate/:_id" element={<OneTimeInvoiceUpdate />} />
+
+          <Route path="/billinginvoices" element={<CreateInvoice />}>
+            <Route path="onetime" element={<OneTimeInvoice />} />
+            <Route path="recurring" element={<BillingRecurringInvoice />} />
           </Route>
 
           <Route path="/teams/" element={<TeamsPlans />}>
             <Route path="plansoverview" element={<PlanOverview />} />
             <Route path="teammembers/" element={<TeamMembers />}>
-              <Route path="active" element={<ActiveMembres />} >
-
-              </Route>
+              <Route path="active" element={<ActiveMembres />}></Route>
 
               <Route path="deactivated" element={<DeactivatedMembers />} />
             </Route>
             <Route path="invoices" element={<TeamInvoices />} />
           </Route>
 
-
           <Route path="/upemailtemplate/:_id" element={<UpdateEmail />} />
           <Route path="firmtemplates" element={<FirmTemplates />}>
-            <Route  path="tasks" element={<Tasks/>}/>
-            <Route path="tags" element={<TagCreate />} >
+            <Route path="tasks" element={<Tasks />} />
+            <Route path="tags" element={<TagCreate />}>
               {/* <Route path="tags"  /> */}
             </Route>
 
             <Route path="emails" element={<CreateEmailTemplate />} />
 
-
             <Route path="jobs" element={<JobsTemp />} />
             <Route path="jobs/JobTemplateUpdate/:_id" element={<JobTemplateUpdate />} />
             <Route path="pipelines" element={<PipelinesTemp />} />
-            <Route path='pipelines/PipelineTemplateUpdate/:_id' element={<PipelineTempUpdate />} />
-            <Route path='organizers' element={<OrgnizersTemp />} />
-            <Route path="folders/" element={<FoldersTemp />}>
-
-            </Route>
+            <Route path="pipelines/PipelineTemplateUpdate/:_id" element={<PipelineTempUpdate />} />
+            <Route path="organizers" element={<OrgnizersTemp />} />
+            <Route path="folders/" element={<FoldersTemp />}></Route>
 
             <Route path="chats" element={<ChatsTemp />} />
             <Route path="sms" element={<SmsTemp />} />
@@ -141,15 +145,15 @@ const Path = () => {
             <Route path="invoices" element={<InvoicesTemp />} />
             <Route path="recurring-invoices" element={<RecurringInvoices />} />
             <Route path="signatures" element={<SignaturesTemp />} />
+
+            <Route path="invoices/invoicestempupdate/:_id" element={<InvoicesTempUpdate/>} />
+            <Route path="chats/chatstempupdate/:_id" element={<ChatsTempUpdate/>} />
           </Route>
 
-          <Route path="/services" element={<Services/>}/> 
-
-
+          <Route path="/services" element={<Services />} />
+          <Route path="services/ServiceTemplateUpdate/:_id" element={<ServiceTemplateUpdate />} />
 
           <Route path="/myaccount" element={<Myaccount />} />
-
-
 
           {/* <Route path='/contacts' element={<Contact/>}/> */}
           <Route path="/accountsdash" element={<AccountDash />}>
@@ -191,50 +195,35 @@ const Path = () => {
         <Route path="*" element={<Error />} />
         <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
 
-
-
         <Route path="/clientsignup" element={<ClientSignup />} />
         <Route path="/clientlogin" element={<ClientLogin />} />
         {/* <Route path="/clientDash" element={<ClientDash />} /> */}
 
-
-
-
         {/* Client dashboard routes */}
-        <Route path="/clientdash" element={<ClientSidebar />} >
-          <Route path="*" element={<NoPage />} /> 
+        <Route path="/clientdash" element={<ClientSidebar />}>
+          <Route path="*" element={<NoPage />} />
           <Route path="home" element={<Home />} />
           <Route path="document" element={<Document />} />
           <Route path="chats" element={<Chats />} />
-          <Route path="task" element={<Task/>}/>
-          <Route path="organiser/" element={<Organizer/>}>
-          {/* <Route index element={<Active/>} /> */}
-          <Route path="active" element={<Active/>}/>
-          <Route path="archive" element={<Archive/>}/>
+          <Route path="task" element={<Task />} />
+          <Route path="organiser/" element={<Organizer />}>
+            {/* <Route index element={<Active/>} /> */}
+            <Route path="active" element={<Active />} />
+            <Route path="archive" element={<Archive />} />
           </Route>
-          <Route path="proposals" element={<Proposal/>}/>
-          <Route path="els" element={<ELS/>}/>
-          <Route path="billing" element={<Billing/>}>
-            <Route path="invoices" element={<BillingInvoces/>}/>
-            <Route path="recurring_invoices" element={<Recurring_invoices/>}/>
-            <Route path="payment" element={<Payment/>}/>
+          <Route path="proposals" element={<Proposal />} />
+          <Route path="els" element={<ELS />} />
+          <Route path="billing" element={<Billing />}>
+            <Route path="invoices" element={<BillingInvoces />} />
+            <Route path="recurring_invoices" element={<Recurring_invoices />} />
+            <Route path="payment" element={<Payment />} />
           </Route>
-          <Route path="setting" element={<Settings/>}/>
-          
-
+          <Route path="setting" element={<Settings />} />
         </Route>
-
-
 
         <Route path="/activate/:_id/:token" element={<ActiveAccount />} />
       </Routes>
-
-
-
-
-
-
-    </BrowserRouter>
+    </Router>
   );
 };
 

@@ -1,0 +1,18 @@
+.email-temp-all{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    margin: 10px;
+    margin-top: 30px;
+}
+.email-left{
+    border: 2px solid blue;
+}
+
+.email-right{
+    border: 2px solid red;
+}
+
+.email-mode{
+    margin: 20px;
+}

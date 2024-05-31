@@ -138,3 +138,22 @@
 .job-template-container::-webkit-scrollbar{
   display: none;
 }
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination li.active {
+  font-weight: bold;
+}
+
+.pagination li.break-me {
+  display: none; /* Hide the dots */
+}

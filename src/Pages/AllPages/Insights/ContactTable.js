@@ -9,7 +9,6 @@ const ITEMS_PER_PAGE = 5;
 const AccountsData = () => {
   // State variables
 
-  
   const API_KEY = process.env.REACT_APP_API_IP;
 
   const [contacts, setContacts] = useState([]);
@@ -85,16 +84,8 @@ const AccountsData = () => {
     }
   };
 
- // Filtering contacts based on search text
- const filteredContacts = contacts.filter((contact) =>
- 
-  (contact.Name && contact.Name.toLowerCase().includes(filter.toLowerCase())) ||
-  (contact.companyName && contact.companyName.toLowerCase().includes(filter.toLowerCase())) ||
-  (contact.Email && contact.Email.toLowerCase().includes(filter.toLowerCase())) ||
-  (contact.phoneNumber instanceof Array && contact.phoneNumber.some((number) => number && number.toLowerCase().includes(filter.toLowerCase()))) ||
-  (contact.Tags && contact.Tags.some((tag) => tag.tagName && tag.tagName.toLowerCase().includes(filter.toLowerCase())))
-);
-
+  // Filtering contacts based on search text
+  const filteredContacts = contacts.filter((contact) => (contact.Name && contact.Name.toLowerCase().includes(filter.toLowerCase())) || (contact.companyName && contact.companyName.toLowerCase().includes(filter.toLowerCase())) || (contact.Email && contact.Email.toLowerCase().includes(filter.toLowerCase())) || (contact.phoneNumber instanceof Array && contact.phoneNumber.some((number) => number && number.toLowerCase().includes(filter.toLowerCase()))) || (contact.Tags && contact.Tags.some((tag) => tag.tagName && tag.tagName.toLowerCase().includes(filter.toLowerCase()))));
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -120,32 +111,32 @@ const AccountsData = () => {
         <input className="searchText" type="text" value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Search" style={{ fontSize: "14px", padding: "4px 8px", borderRadius: "5px" }} />
       </div>
       {/* <div> */}
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <input type="checkbox" checked={selectAll} onChange={handleCheckboxChange} />
-              </th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Company Name</th>
-              <th>Tags</th>
-              <th> </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredContacts.slice(startIndex, endIndex).map((contact) => (
-              <tr key={contact.id}>
-                <td>
-                  <input type="checkbox" checked={selectedContacts.includes(contact.id)} onChange={() => handleRecordCheckboxChange(contact.id)} />
-                </td>
-                <td>{contact.Name}</td>
-                <td>{contact.Email}</td>
-                <td>{contact.phoneNumber ? contact.phoneNumber.map((number, index) => <div key={index}>{number}</div>) : <span> </span>}</td>
-                <td>{contact.companyName}</td>
-                <td>
-                  {/* {contact.Tags &&
+      <table style={{ width: "100%" }}>
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" checked={selectAll} onChange={handleCheckboxChange} />
+            </th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Company Name</th>
+            <th>Tags</th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredContacts.slice(startIndex, endIndex).map((contact) => (
+            <tr key={contact.id}>
+              <td>
+                <input type="checkbox" checked={selectedContacts.includes(contact.id)} onChange={() => handleRecordCheckboxChange(contact.id)} />
+              </td>
+              <td>{contact.Name}</td>
+              <td>{contact.Email}</td>
+              <td>{contact.phoneNumber ? contact.phoneNumber.map((number, index) => <div key={index}>{number}</div>) : <span> </span>}</td>
+              <td>{contact.companyName}</td>
+              <td>
+                {/* {contact.Tags &&
                     contact.Tags.map((tagArray) => (
                       <div key={tagArray[0]._id}>
                         {tagArray.map((tag) => (
@@ -156,37 +147,35 @@ const AccountsData = () => {
                       </div>
                     ))} */}
                 {contact.Tags &&
-                    contact.Tags.map((tagArray) => (
-                      <div key={tagArray[0]._id}>
-                        {tagArray.map((tag) => (
-                          <h5
-                            key={tag._id}
-                            style={{
-                              fontSize: "10px",
-                              padding: "2px 5px ",
-                              backgroundColor: tag.tagColour,
-                              color: "#fff",
-                              borderRadius: "10px",
-                              textAlign: "center",
-                              marginBottom: "5px",
-                            }}
-                          >
-                            {tag.tagName && tag.tagName.length > 10 ? <span title={tag.tagName}>{tag.tagName.slice(0, 10)}...</span> : tag.tagName}
-                          </h5>
-                        ))}
-                      </div>
-                    ))}
-
-                  
-                </td>
-                <td style={{ color: "red" }}>
-                  {" "}
-                  <RiDeleteBin5Line onClick={(txt) => handleDelete(contact.id)} />{" "}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  contact.Tags.map((tagArray) => (
+                    <div key={tagArray[0]._id}>
+                      {tagArray.map((tag) => (
+                        <h5
+                          key={tag._id}
+                          style={{
+                            fontSize: "10px",
+                            padding: "2px 5px ",
+                            backgroundColor: tag.tagColour,
+                            color: "#fff",
+                            borderRadius: "10px",
+                            textAlign: "center",
+                            marginBottom: "5px",
+                          }}
+                        >
+                          {tag.tagName && tag.tagName.length > 10 ? <span title={tag.tagName}>{tag.tagName.slice(0, 10)}...</span> : tag.tagName}
+                        </h5>
+                      ))}
+                    </div>
+                  ))}
+              </td>
+              <td style={{ color: "red" }}>
+                {" "}
+                <RiDeleteBin5Line onClick={(txt) => handleDelete(contact.id)} />{" "}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {/* </div> */}
       {/* Pagination */}
       <ReactPaginate

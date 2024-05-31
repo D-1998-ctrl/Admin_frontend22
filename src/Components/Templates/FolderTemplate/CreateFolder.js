@@ -5,6 +5,7 @@ import axios from "axios"
 import * as yup from "yup";
 
 export default function CreateFolder({setIsFolderFormOpen,isFolderFormOpen,folderData,templateId}) {
+  const API_KEY = process.env.REACT_APP_API_IP;
 
     const handleFormClose = () => {
         setIsFolderFormOpen(false);
@@ -27,7 +28,8 @@ export default function CreateFolder({setIsFolderFormOpen,isFolderFormOpen,folde
           await schema.validate({ folderName, selectedFolder }, { abortEarly: false });
       
           try {
-            await axios.post("http://192.168.1.116:8080/common/createFolder", {
+            const url = `${API_KEY}/common/createFolder`;
+            await axios.post(url, {
               folderName: folderName,
               selectedFolder: selectedFolder,
               templateId: templateId,
